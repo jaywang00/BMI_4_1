@@ -25,24 +25,31 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
-        submit = findViewById(R.id.submit);
+        findViews();
         submit.setOnClickListener(this);
     }
 
+
+    private void findViews(){
+        submit = findViewById(R.id.submit);
+        field_height = findViewById(R.id.field_height);
+        field_weight = findViewById(R.id.field_weight);
+        result = findViewById(R.id.result);
+        suggest = findViewById(R.id.suggest);
+    }
     @Override
     public void onClick(View v) {
         DecimalFormat df = new DecimalFormat("0.00");
 
-        field_height = findViewById(R.id.field_height);
-        field_weight = findViewById(R.id.field_weight);
+
 
         double height = Double.parseDouble(field_height.getText().toString()) / 100;
         double weight = Double.parseDouble(field_weight.getText().toString());
         double BMI = weight / (height * height);
 
-        result = findViewById(R.id.result);
+
         result.setText("你的BMI值 = " + df.format(BMI));
-        suggest = findViewById(R.id.suggest);
+
 
         if (BMI > 25)
             suggest.setText(R.string.advice_heavy);
