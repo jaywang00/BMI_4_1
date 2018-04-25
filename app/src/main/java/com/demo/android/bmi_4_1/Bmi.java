@@ -37,6 +37,7 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
         result = findViewById(R.id.result);
         suggest = findViewById(R.id.suggest);
     }
+
     @Override
     public void onClick(View v) {
         DecimalFormat df = new DecimalFormat("0.00");
