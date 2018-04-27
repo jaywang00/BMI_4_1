@@ -1,5 +1,6 @@
 package com.demo.android.bmi_4_1;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -73,8 +74,18 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Android BMI");
             builder.setMessage("Android BMI Calculator");
+
+            builder.setPositiveButton("OK",dialogListener);
+
             builder.show();
         }
 
+
+        DialogInterface.OnClickListener dialogListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                System.out.println("Push the OK Button");
+            }
+        };
 }
 
