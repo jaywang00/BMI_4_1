@@ -1,5 +1,6 @@
 package com.demo.android.bmi_4_1;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,7 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
         findViews();
-        setMyListener();
+        myListener();
     }
 
 
@@ -38,7 +39,7 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
         suggest = findViewById(R.id.suggest);
     }
 
-    private void setMyListener(){
+    private void myListener(){
         submit.setOnClickListener(this);
     }
 
@@ -62,7 +63,18 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
             suggest.setText(R.string.advice_light);
         else
             suggest.setText(R.string.advice_average);
-    }
-}
 
+        openOptionsDialog();
+
+
+        }
+
+        void openOptionsDialog(){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Android BMI");
+            builder.setMessage("Android BMI Calculator");
+            builder.show();
+        }
+
+}
 
