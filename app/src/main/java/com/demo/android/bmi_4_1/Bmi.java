@@ -75,17 +75,35 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
             builder.setTitle("Android BMI");
             builder.setMessage("Android BMI Calculator");
 
-            builder.setPositiveButton("OK",dialogListener);
+            builder.setPositiveButton("OK", dialogListener1);
+            builder.setNegativeButton("Cancel", dialogListener2);
+            builder.setNeutralButton("Other", dialogListener3);
 
             builder.show();
         }
 
 
-        DialogInterface.OnClickListener dialogListener = new DialogInterface.OnClickListener() {
+        DialogInterface.OnClickListener dialogListener1 = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 System.out.println("Push the OK Button");
             }
         };
+
+        DialogInterface.OnClickListener dialogListener2 = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                System.out.println("Push the Cancel Button");
+            }
+        };
+
+        DialogInterface.OnClickListener dialogListener3 = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                System.out.println("Push the Other Button");
+            }
+        };
+
 }
+
 
