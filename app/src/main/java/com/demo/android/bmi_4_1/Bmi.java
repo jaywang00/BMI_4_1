@@ -15,8 +15,6 @@ import java.text.DecimalFormat;
 public class Bmi extends AppCompatActivity implements View.OnClickListener {
 
 
-
-
     EditText field_height;
     EditText field_weight;
     TextView result;
@@ -32,7 +30,7 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-    private void findViews(){
+    private void findViews() {
         submit = findViewById(R.id.submit);
         field_height = findViewById(R.id.field_height);
         field_weight = findViewById(R.id.field_weight);
@@ -40,14 +38,13 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
         suggest = findViewById(R.id.suggest);
     }
 
-    private void myListener(){
+    private void myListener() {
         submit.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         DecimalFormat df = new DecimalFormat("0.00");
-
 
 
         double height = Double.parseDouble(field_height.getText().toString()) / 100;
@@ -68,41 +65,39 @@ public class Bmi extends AppCompatActivity implements View.OnClickListener {
         openOptionsDialog();
 
 
+    }
+
+    void openOptionsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Android BMI");
+        builder.setMessage("Android BMI Calculator");
+
+        builder.setPositiveButton("OK", dialogListener1);
+        builder.setNegativeButton("Cancel", dialogListener1);
+        builder.setNeutralButton("Other", dialogListener1);
+
+        builder.show();
+    }
+
+
+    DialogInterface.OnClickListener dialogListener1 = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
+            switch (which) {
+
+                case DialogInterface.BUTTON_POSITIVE:
+                    System.out.println("Push the OK Button");
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    System.out.println("Push the Cancel Button");
+
+                case DialogInterface.BUTTON_NEUTRAL:
+                    System.out.println("Push the Other Button");
+            }
         }
+    };
 
-        void openOptionsDialog(){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Android BMI");
-            builder.setMessage("Android BMI Calculator");
-
-            builder.setPositiveButton("OK", dialogListener1);
-            builder.setNegativeButton("Cancel", dialogListener2);
-            builder.setNeutralButton("Other", dialogListener3);
-
-            builder.show();
-        }
-
-
-        DialogInterface.OnClickListener dialogListener1 = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("Push the OK Button");
-            }
-        };
-
-        DialogInterface.OnClickListener dialogListener2 = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("Push the Cancel Button");
-            }
-        };
-
-        DialogInterface.OnClickListener dialogListener3 = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("Push the Other Button");
-            }
-        };
 
 }
 
